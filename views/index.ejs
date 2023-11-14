@@ -1,41 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/styles.css">
-    <script src="./script.js" defer></script>
-    <title>Document</title>
-</head>
-<body>
-    <div class="search-wrapper">
-        <label for="search" style="display: block;">Search Events</label>
-        <input type="search" id="search" data-search>
-        
-        <div class="event-cards"></div>
-        <event-card>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="./css/styles.css">
+      <script src="./script.js" defer></script>
+      <title>Document</title>
+   </head>
+   <body>
+      <div class="search-wrapper">
+         <label for="search" style="display: block;">Search Events</label>
+         <input type="search" id="search" data-search>
+         <div class="event-cards">
+            <% events.forEach( (e) => {%>
             <div class="card">
-                <div class="header">title</div>
+                <div class="header"><%= e.name %></div>
                 <div class="body">
-                    <p class="description">desc</p>
-                    <p class="date">date</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="header">title</div>
-                <div class="body">
-                    <p class="description">desc</p>
-                    <p class="date">date</p>
+                    <p class="description"><%= e.description %></p>
+                    <p class="date"><%= e.date.toLocaleDateString("en-US") %></p>
+                    <p class="mongoID" hidden="true"><%= e.id %></p>
                 </div>
             </div> 
-            <div class="card">
-                <div class="header">title</div>
-                <div class="body">
-                    <p class="description">desc</p>
-                    <p class="date">date</p>
-                </div>
-            </div> 
-            
-    </div>
-</body>
+            <%})%>
+         </div>
+      </div>
+   </body>
 </html>

@@ -23,14 +23,8 @@ const dbURL = `mongodb+srv://developer:${APIKey}@cluster0.4ztfnxn.mongodb.net/?r
 mongoose.connect(dbURL);
 
 app.get('/', async (req, res) => {
-   res.sendFile(__dirname+"/index.html");
-})
-
-// Using this to fetch all the data from
-app.get("/raw/events", async (req, res) => {
-
    const events = await Event.find();
-   res.json(events);
+   res.render("index.ejs", {events: events});
 })
 
 // Running the server
